@@ -179,5 +179,7 @@ kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectca
 ```
 
 ref: https://www.youtube.com/watch?v=c1SCdv2hYDc
+
 ref: https://github.com/justmeandopensource/kubernetes/tree/master/kubeadm-ha-multi-master
+
 ref: https://computingforgeeks.com/install-kubernetes-cluster-on-centos-with-kubeadm/
