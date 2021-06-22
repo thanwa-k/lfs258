@@ -81,7 +81,7 @@ Install Container runtime
 # Install packages
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum update -y && yum install -y containerd.io-1.2.13 docker-ce-19.03.8 docker-ce-cli-19.03.8
+sudo yum update -y && sudo yum install -y containerd.io-1.2.13 docker-ce-19.03.8 docker-ce-cli-19.03.8
 
 # Create required directories
 sudo mkdir /etc/docker
