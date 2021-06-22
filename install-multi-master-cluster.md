@@ -1,8 +1,12 @@
 hostnamectl set-hostname name
 
 # on load balancer
-```sudo yum install haproxy -y```
-```sudo vim /etc/haproxy/haproxy.cfg```
+```
+sudo yum install haproxy -y
+```
+```
+sudo vim /etc/haproxy/haproxy.cfg
+```
 
 ```
 frontend kubernetes-frontend
@@ -18,7 +22,9 @@ backend kubernetes-backend
     server master-node1 192.168.0.112:6443 check fall 3 rise 2
     server master-node2 192.168.0.113:6443 check fall 3 rise 2
 ```
-```systemctl restart haproxy```
+```
+systemctl restart haproxy
+```
 
 # on other nodes
 Login to all servers and update the OS.
@@ -139,28 +145,31 @@ $ sudo kubeadm config images pull
 [config/images] Pulled k8s.gcr.io/coredns:1.6.7
 ```
 Create cluster:
+
 ```
 sudo kubeadm init \
   --pod-network-cidr=192.168.0.0/16 \
   --control-plane-endpoint=192.168.0.116
-  ```
+```
   
   
   
-  ```
-  mkdir -p $HOME/.kube
+```
+ mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
 # on master-node2
-```kubeadm join 192.168.0.116:6443 --token 4idwrf.0to6tfzjwryuc2f7 \
+```
+kubeadm join 192.168.0.116:6443 --token 4idwrf.0to6tfzjwryuc2f7 \
         --discovery-token-ca-cert-hash sha256:ffc4ce3d7685d31c31a2647b1026d504495888407b9c044182cfdf78c3ec5a76 \
         --control-plane --certificate-key 1c59863444279beaaa751f3fec41a4a9807470ed61e46d413f9fa9b48e9e5a72 --apiserver-advertise-address 192.168.0.113
 ```
 
 # on worker-node1
-```kubeadm join 192.168.0.116:6443 --token 4idwrf.0to6tfzjwryuc2f7 \
+```
+kubeadm join 192.168.0.116:6443 --token 4idwrf.0to6tfzjwryuc2f7 \
         --discovery-token-ca-cert-hash sha256:ffc4ce3d7685d31c31a2647b1026d504495888407b9c044182cfdf78c3ec5a76
 ```
 
