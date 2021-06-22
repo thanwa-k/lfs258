@@ -177,3 +177,7 @@ kubeadm join 192.168.0.116:6443 --token 4idwrf.0to6tfzjwryuc2f7 \
 ```
 kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f https://docs.projectcalico.org/v3.15/manifests/calico.yaml
 ```
+
+ref: https://www.youtube.com/watch?v=c1SCdv2hYDc
+ref: https://github.com/justmeandopensource/kubernetes/tree/master/kubeadm-ha-multi-master
+ref: https://computingforgeeks.com/install-kubernetes-cluster-on-centos-with-kubeadm/
