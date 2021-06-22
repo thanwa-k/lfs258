@@ -1,5 +1,6 @@
+```
 hostnamectl set-hostname name
-
+```
 # on load balancer
 ```
 sudo yum install haproxy -y
