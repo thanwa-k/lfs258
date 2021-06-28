@@ -24,6 +24,9 @@ backend kubernetes-backend
     server master-node2 192.168.0.113:6443 check fall 3 rise 2
 ```
 ```
+setsebool -P haproxy_connect_any on
+```
+```
 systemctl restart haproxy
 ```
 
@@ -51,6 +54,8 @@ sudo yum -y install epel-release vim git curl wget kubelet kubeadm kubectl --dis
 Confirm installation by checking the version of kubectl.
 ```
 $ kubectl version --client
+```
+```
 Client Version: version.Info{Major:"1", Minor:"18", GitVersion:"v1.18.3", GitCommit:"2e7996e3e2712684bc73f0dec0200d64eec7fe40", GitTreeState:"clean", BuildDate:"2020-05-20T12:52:00Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
@@ -125,6 +130,8 @@ sudo firewall-cmd --reload
 Initialize your control-plane node
 ```
 $ lsmod | grep br_netfilter
+```
+```
 br_netfilter           22256  0 
 bridge                151336  2 br_netfilter,ebtable_broute
 ```
@@ -137,6 +144,8 @@ sudo systemctl enable kubelet
 Pull container images:
 ```
 $ sudo kubeadm config images pull
+```
+```
 [config/images] Pulled k8s.gcr.io/kube-apiserver:v1.18.3
 [config/images] Pulled k8s.gcr.io/kube-controller-manager:v1.18.3
 [config/images] Pulled k8s.gcr.io/kube-scheduler:v1.18.3
