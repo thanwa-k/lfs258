@@ -29,6 +29,7 @@ setsebool -P haproxy_connect_any on
 ```
 systemctl restart haproxy
 ```
+**Don't forget to open port on Loadbalancer**
 
 # on other nodes
 Login to all servers and update the OS.
@@ -53,7 +54,7 @@ sudo yum -y install epel-release vim git curl wget kubelet kubeadm kubectl --dis
 ```
 Confirm installation by checking the version of kubectl.
 ```
-$ kubectl version --client
+kubectl version --client
 ```
 ```
 Client Version: version.Info{Major:"1", Minor:"18", GitVersion:"v1.18.3", GitCommit:"2e7996e3e2712684bc73f0dec0200d64eec7fe40", GitTreeState:"clean", BuildDate:"2020-05-20T12:52:00Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
@@ -129,7 +130,7 @@ sudo firewall-cmd --reload
 
 Initialize your control-plane node
 ```
-$ lsmod | grep br_netfilter
+lsmod | grep br_netfilter
 ```
 ```
 br_netfilter           22256  0 
@@ -143,7 +144,7 @@ sudo systemctl enable kubelet
 
 Pull container images:
 ```
-$ sudo kubeadm config images pull
+sudo kubeadm config images pull
 ```
 ```
 [config/images] Pulled k8s.gcr.io/kube-apiserver:v1.18.3
@@ -159,7 +160,9 @@ Create cluster:
 ```
 sudo kubeadm init \
   --pod-network-cidr=192.168.0.0/16 \
-  --control-plane-endpoint=192.168.0.116
+  --control-plane-endpoint=192.168.0.116 \
+  --apiserver-advertise-address 192.168.0.113 \
+  --upload-certs
 ```
   
   
