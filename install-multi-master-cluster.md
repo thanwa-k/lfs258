@@ -160,7 +160,7 @@ Create cluster:
 ```
 sudo kubeadm init \
   --pod-network-cidr=192.168.0.0/16 \
-  --control-plane-endpoint=192.168.0.116 \
+  --control-plane-endpoint=192.168.0.116:6443 \
   --apiserver-advertise-address 192.168.0.113 \
   --upload-certs
 ```
